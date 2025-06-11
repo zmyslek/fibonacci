@@ -1,19 +1,9 @@
-import redis
-import pickle
+# cache_utils.py
+from functools import lru_cache
 
-# Connect to Azure Redis Cache
-redis_client = redis.StrictRedis(
-    host='<YOUR_REDIS_HOST>.redis.cache.windows.net',
-    port=6380,
-    ssl=True,
-    password='<YOUR_REDIS_KEY>'
-)
+@lru_cache(maxsize=128)
+def get_cached_fibonacci(n):
+    return None  # You can implement real caching with Redis or other backend if needed
 
-def cache_fibonacci(n: int, value):
-    """Cache Fibonacci(n) in Redis."""
-    redis_client.set(f"fib:{n}", pickle.dumps(value))
-
-def get_cached_fibonacci(n: int):
-    """Retrieve Fibonacci(n) from Redis."""
-    cached = redis_client.get(f"fib:{n}")
-    return pickle.loads(cached) if cached else None
+def cache_fibonacci(n, result):
+    pass  # Add your caching logic here
