@@ -1,0 +1,2 @@
+azure-functions
+mpmath==1.3.0
